@@ -18,14 +18,14 @@
 		<meta property="og:url" content="https://empirecraftmc.com/" />
 		<meta property="og:title" content="EmpireCraft - Minecraft Community Server" />
 		<meta property="og:description" content="EmpireCraft started its first season in 2018, and has continued to operate with a tight-knit group that's always welcoming new players. Join players from around the world for collaborative builds, community events, and more." />
-		<meta property="og:image" content="https://empirecraftmc.com/gallery-1.png" />
+		<meta property="og:image" content="https://empirecraftmc.com/gallery-1.webp" />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content="https://empirecraftmc.com/" />
 		<meta property="twitter:title" content="EmpireCraft - Minecraft Community Server" />
 		<meta property="twitter:description" content="EmpireCraft started its first season in 2018, and has continued to operate with a tight-knit group that's always welcoming new players. Join players from around the world for collaborative builds, community events, and more." />
-		<meta property="twitter:image" content="https://empirecraftmc.com/gallery-1.png" />
+		<meta property="twitter:image" content="https://empirecraftmc.com/gallery-1.webp" />
 
 		<!-- Discord Embed -->
 		<meta name="theme-color" content="#ef5c06" />
@@ -62,7 +62,12 @@
 					<img id="server-icon" src="/logo.png" alt="EmpireCraft" class="nav-server-icon" />
 					<span class="nav-logo-text">EmpireCraft</span>
 				</a>
-				<div class="nav-links">
+				<button class="hamburger" id="hamburger" aria-label="Menu">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+				<div class="nav-links" id="nav-links">
 					<a href="#home" class="nav-link">Home</a>
 					<a href="http://map.empirecraftmc.com/" target="_blank" rel="noopener noreferrer" class="nav-link">Map</a>
 					<a href="https://patreon.com/empirecraftsmp" target="_blank" rel="noopener noreferrer" class="nav-link">Support</a>
@@ -74,10 +79,10 @@
 		<!-- Hero Section with Slideshow Background -->
 		<section class="hero">
 			<div class="slideshow">
-				<div class="slide active" style="background-image: url('/gallery-1.png')"></div>
-				<div class="slide" style="background-image: url('/gallery-2.png')"></div>
-				<div class="slide" style="background-image: url('/gallery-3.png')"></div>
-				<div class="slide" style="background-image: url('/gallery-4.png')"></div>
+				<div class="slide active" style="background-image: url('/gallery-1.webp')"></div>
+				<div class="slide" style="background-image: url('/gallery-2.webp')"></div>
+				<div class="slide" style="background-image: url('/gallery-3.webp')"></div>
+				<div class="slide" style="background-image: url('/gallery-4.webp')"></div>
 			</div>
 			<div class="hero-overlay"></div>
 			<div class="hero-content">
@@ -436,6 +441,38 @@
 				background: var(--accent-hover);
 				transform: translateY(-1px);
 				text-decoration: none !important;
+			}
+
+			/* Hamburger Menu */
+			.hamburger {
+				display: none;
+				flex-direction: column;
+				gap: 5px;
+				background: none;
+				border: none;
+				cursor: pointer;
+				padding: 0.5rem;
+				z-index: 101;
+			}
+
+			.hamburger span {
+				width: 25px;
+				height: 3px;
+				background: var(--text-primary);
+				transition: all 0.3s ease;
+				border-radius: 2px;
+			}
+
+			.hamburger.active span:nth-child(1) {
+				transform: rotate(45deg) translate(8px, 8px);
+			}
+
+			.hamburger.active span:nth-child(2) {
+				opacity: 0;
+			}
+
+			.hamburger.active span:nth-child(3) {
+				transform: rotate(-45deg) translate(7px, -7px);
 			}
 
 			/* Hero Section with Slideshow */
@@ -838,16 +875,42 @@
 					font-size: 1.3rem;
 				}
 
+				/* Mobile Navigation */
+				.hamburger {
+					display: flex;
+				}
+
 				.nav-links {
-					gap: 1rem;
+					position: fixed;
+					top: 110px;
+					right: -100%;
+					width: 70%;
+					max-width: 300px;
+					height: calc(100vh - 110px);
+					background: var(--bg-card);
+					flex-direction: column;
+					padding: 2rem 1rem;
+					gap: 1.5rem;
+					transition: right 0.3s ease;
+					border-left: 1px solid var(--border);
+					box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+				}
+
+				.nav-links.active {
+					right: 0;
 				}
 
 				.nav-link {
-					font-size: 0.85rem;
+					font-size: 1rem;
+					padding: 0.5rem 0;
+					border-bottom: 1px solid var(--border);
 				}
 
 				.nav-link-support {
-					padding: 0.4rem 0.8rem;
+					padding: 0.75rem 1.5rem;
+					margin-top: 1rem;
+					text-align: center;
+					border-bottom: none;
 				}
 
 				.nav-server-icon {
@@ -896,6 +959,34 @@
 
 			// Run on page load
 			checkHolidayPeriod();
+
+			// Mobile menu toggle
+			const hamburger = document.getElementById('hamburger');
+			const navLinks = document.getElementById('nav-links');
+
+			if (hamburger && navLinks) {
+				hamburger.addEventListener('click', () => {
+					hamburger.classList.toggle('active');
+					navLinks.classList.toggle('active');
+				});
+
+				// Close menu when clicking a link
+				const links = navLinks.querySelectorAll('.nav-link');
+				links.forEach(link => {
+					link.addEventListener('click', () => {
+						hamburger.classList.remove('active');
+						navLinks.classList.remove('active');
+					});
+				});
+
+				// Close menu when clicking outside
+				document.addEventListener('click', (e) => {
+					if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+						hamburger.classList.remove('active');
+						navLinks.classList.remove('active');
+					}
+				});
+			}
 
 			function copyToClipboard(text, button) {
 				navigator.clipboard.writeText(text).then(() => {
