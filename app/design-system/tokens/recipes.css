@@ -1,0 +1,43 @@
+/* ── Recipes ────────────────────────────────────────────────────────────────
+   The few shared classes worth having outside components: decorative layers
+   and text treatments that cannot live in a single React primitive. */
+.ec-container{max-width:var(--container);margin-inline:auto;padding-inline:var(--gutter)}
+.ec-section{padding-block:var(--section-y)}
+@media (max-width:767px){.ec-section{padding-block:var(--section-y-sm)}}
+
+/* Glass pill container — nav shells, chips over imagery */
+.ec-glass{backdrop-filter:blur(var(--blur-lg));background:linear-gradient(var(--white-16) 0%,var(--white-08) 100%);border:1px solid transparent;border-radius:var(--radius);box-shadow:var(--shadow-glass)}
+
+/* Framed panel */
+.ec-frame{background:var(--surface-panel);border-radius:var(--radius-panel);box-shadow:var(--shadow-panel)}
+
+/* Inset tile — pressed into the page */
+.ec-tile{background:var(--surface-inset);box-shadow:var(--shadow-inset-tile);border-radius:var(--radius-tile)}
+
+/* Gradient-clipped display text over imagery */
+.ec-gradient-text{color:#fff;background:linear-gradient(#fff 0%,#ffffffe6 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 1px 3px rgba(0,0,0,.12))}
+
+/* Expanding hover well — replaces underlines on link lists */
+.ec-well-link{position:relative;isolation:isolate;transition:color var(--duration-ui) var(--ease-out)}
+.ec-well-link::before{content:"";position:absolute;inset:-2px -6px;background:#e7e7e3cc;border-radius:var(--radius-sm);opacity:0;z-index:-1;transition:opacity var(--duration-ui) var(--ease-out)}
+.ec-well-link:hover::before{opacity:1}
+
+/* Radial wash + edge-fade masks */
+.ec-radial-wash{background:radial-gradient(circle,#fff0 30%,var(--color-surface) 80%)}
+.ec-edge-fade{mask-image:linear-gradient(90deg,transparent 0%,#000 12% 88%,transparent 100%),linear-gradient(transparent 0%,#000 15% 85%,transparent 100%);mask-composite:intersect;-webkit-mask-composite:source-in}
+
+/* Micro label — pixel font, tracked, uppercase */
+.ec-micro{font-family:var(--font-pixel);font-size:var(--text-micro);line-height:1;letter-spacing:var(--tracking-micro);text-transform:uppercase;color:var(--color-ink-muted)}
+
+/* Skeleton shimmer — BLOCK-level only. The negative inline margins let the sweep
+   run past the text, so it bleeds outside its container: never use it for an inline
+   value inside a table row or a panel with overflow:hidden. For a pending value,
+   print muted text instead. */
+.ec-shimmer{color:#2623231a;background-color:#2623234d;background-image:linear-gradient(90deg,#2623234d,#262323cc 50%,#2623234d);background-size:50px 100%;background-repeat:no-repeat;background-clip:text;-webkit-text-fill-color:transparent;margin-inline:-60px;padding-inline:60px;animation:ec-shimmer var(--duration-shimmer) infinite}
+
+/* Hidden-until-hover scrollbar */
+.ec-scroll{scrollbar-width:thin;scrollbar-color:transparent transparent}
+.ec-scroll:hover{scrollbar-color:var(--color-ink-hairline) transparent}
+.ec-scroll::-webkit-scrollbar{width:4px}
+.ec-scroll::-webkit-scrollbar-thumb{background:transparent;border-radius:var(--radius-full)}
+.ec-scroll:hover::-webkit-scrollbar-thumb{background:var(--color-ink-hairline)}

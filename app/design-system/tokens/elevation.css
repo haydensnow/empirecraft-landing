@@ -1,0 +1,64 @@
+/* ── Elevation ──────────────────────────────────────────────────────────────
+   Depth is FOUR stacked concerns, never one shadow:
+   1 inner top highlight · 2 hairline ring · 3 ambient shadow · 4 translucent halo.
+   Hover TIGHTENS the shadow and RAISES the highlight — objects press up
+   toward the cursor, they do not lift off the page. */
+:root{
+  --blur-sm:8px; --blur-md:12px; --blur-lg:16px;
+
+  /* Framed panel — the signature recipe */
+  --shadow-panel:
+    inset 0 0 .357px 1.5px var(--white-35),
+    inset 0 2px 0 #fff,
+    0 0 2px var(--black-25),
+    0 0 0 4px #e8e7e652;
+
+  /* Light control at rest / hover */
+  --shadow-control:
+    0 2px 3px var(--black-06),
+    inset 0 0 .357px 1.5px var(--white-35),
+    inset 0 2px 0 #fff;
+  --shadow-control-hover:
+    0 1px 2px var(--black-12),
+    inset 0 0 .357px 1.5px var(--white-35),
+    inset 0 3px 0 #fff;
+
+  /* Dark control */
+  --shadow-control-dark:
+    0 0 0 1px #4040401f,
+    inset 0 2px 0 var(--white-24),
+    inset 0 -.5px 2px var(--black-25),
+    0 2px 8px var(--black-03),
+    0 3px 4px #00000029;
+  --shadow-control-dark-hover:
+    0 0 0 1px #4040401f,
+    inset 0 2px 0 #fff6,
+    inset 0 -.5px 2px var(--black-25);
+
+  /* Deep card — layered sub-pixel rings, printed-card edge */
+  --shadow-card:
+    inset 0 2px 1px #fff,
+    inset 0 0 0 .931px #fff,
+    0 0 0 .931px var(--black-08),
+    0 4px 8px var(--black-03),
+    0 9px 8px var(--black-02);
+
+  /* Inset tile — pressed INTO the page */
+  --shadow-inset-tile:
+    inset 0 0 0 1px #fff,
+    inset 1px 1px 4px var(--black-12),
+    inset -2px -2px 3px #ffffffb3;
+
+  /* Glass pill — bottom-weighted inner shadows read as translucent */
+  --shadow-glass:
+    inset 0 -1px 0 var(--black-12),
+    inset 0 -1px 2px var(--black-10),
+    inset 0 1px 1px var(--white-24);
+
+  /* Long-tail diffuse occlusion — drawers, overlays */
+  --shadow-overlay:
+    0 229px 91px var(--black-03),
+    0 129px 77px var(--black-05),
+    0 57px 57px #00000017,
+    0 14px 31px var(--black-10);
+}

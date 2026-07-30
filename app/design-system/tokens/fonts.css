@@ -1,0 +1,20 @@
+/* ── Webfonts ───────────────────────────────────────────────────────────────
+   SUBSTITUTIONS (see readme.md "Font substitutions"):
+   TT Neoris (commercial, TypeType) -> Hanken Grotesk Variable  [primary sans]
+   Departure Mono (not on Google Fonts) -> Silkscreen           [pixel accent]
+   IBM Plex Mono -> IBM Plex Mono (exact match, no substitution)
+   Both substitutes carry a variable/near weight axis so the signature
+   font-weight:460 body setting survives. Replace with licensed binaries when
+   available: drop .woff2 files in assets/fonts/ and swap the @font-face src. */
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Mono:wght@400;500&family=Silkscreen:wght@400;700&display=swap");
+
+/* Metric-matched Arial fallbacks — kill layout shift during swap.
+   Overrides transposed from the source system's next/font output. */
+@font-face{font-family:"Neoris Fallback";src:local("Arial");ascent-override:101.58%;descent-override:29.02%;line-gap-override:0%;size-adjust:96.47%}
+@font-face{font-family:"Pixel Fallback";src:local("Arial");ascent-override:71.70%;descent-override:19.56%;line-gap-override:0%;size-adjust:139.46%}
+@font-face{font-family:"IBM Plex Mono Fallback";src:local("Arial");ascent-override:76.16%;descent-override:20.43%;line-gap-override:0%;size-adjust:134.59%}
+
+/* PP Mondwest (Pangram Pangram) — the DISPLAY face.
+   Supplied as real binaries. Headlines only: hero, section headings, slide titles,
+   big readout numbers. Never body copy, never UI labels. */
+@font-face{font-family:"PP Mondwest";src:url("../assets/fonts/PPMondwest-Regular.woff2") format("woff2"),url("../assets/fonts/PPMondwest-Regular.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}

@@ -1,0 +1,36 @@
+/* ── Motion ─────────────────────────────────────────────────────────────────
+   Entrances get expo-out or a spring; exits get ease-in. Enter/exit pairs a
+   translate with a 3–6px blur — a shallow depth-of-field signature.
+   Transitions are always property-scoped, never "all". */
+:root{
+  --duration-snap:20ms; /* @kind other */
+  --duration-control:.14s; /* @kind other */  /* button hover */
+  --duration-default:.15s; /* @kind other */
+  --duration-ui:.2s; /* @kind other */        /* standard: color, opacity, hover wells */
+  --duration-accordion:.25s; /* @kind other */
+  --duration-reveal:.3s; /* @kind other */
+  --duration-enter:.42s; /* @kind other */
+  --duration-exit:.52s; /* @kind other */
+  --duration-stagger:.6s; /* @kind other */
+  --duration-shimmer:2.8s; /* @kind other */
+  --duration-marquee:20s; /* @kind other */
+
+  --ease-default:cubic-bezier(.4,0,.2,1); /* @kind other */
+  --ease-in:cubic-bezier(.4,0,1,1); /* @kind other */
+  --ease-out:cubic-bezier(0,0,.2,1); /* @kind other */
+  --ease-expo-out:cubic-bezier(.23,1,.32,1); /* @kind other */   /* hero enter */
+  --ease-expo-soft:cubic-bezier(.22,1,.36,1); /* @kind other */
+  --ease-quart-out:cubic-bezier(.22,.61,.36,1); /* @kind other */
+  --ease-quart-gentle:cubic-bezier(.215,.61,.355,1); /* @kind other */ /* accordion */
+  --ease-spring:cubic-bezier(.34,1.56,.64,1); /* @kind other */   /* pop / overshoot */
+  --ease-spring-mild:cubic-bezier(.34,1.3,.64,1); /* @kind other */
+  --ease-accelerate:cubic-bezier(.55,.06,.68,.19); /* @kind other */ /* exit away */
+}
+
+@keyframes ec-enter{to{opacity:1;transform:none}}
+@keyframes ec-pop{0%{opacity:0;transform:scale(.88) translateY(10px)}100%{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes ec-row-in{0%{opacity:0;transform:translateY(8px);filter:blur(3px)}60%{opacity:1}100%{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes ec-shimmer{0%{background-position:0 0}80%,100%{background-position:100% 0}}
+@keyframes ec-marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes ec-caret{0%,50%{opacity:1}51%,100%{opacity:0}}
+@keyframes ec-badge-blink{0%,100%{opacity:1}50%{opacity:.15}}

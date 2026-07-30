@@ -1,0 +1,35 @@
+/* ── Base ───────────────────────────────────────────────────────────────────
+   font-synthesis:none + locked ital axis: the browser may never fake a style. */
+html,body{
+  background:var(--surface-page);
+  color:var(--text-body);
+  margin:0;padding:0;width:100%;
+  font-family:var(--font-sans);
+  font-size:var(--text-ui);
+  font-weight:var(--weight-body);
+  letter-spacing:var(--tracking-body);
+  line-height:var(--leading-body);
+  font-synthesis:none;
+  font-variation-settings:"ital" 0;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overscroll-behavior-y:none;
+}
+*{font-variation-settings:"ital" 0}
+*,*::before,*::after{box-sizing:border-box}
+h1,h2,h3,h4,h5,h6{font-family:var(--font-display);font-weight:var(--weight-heading);color:var(--text-heading);line-height:var(--leading-heading);letter-spacing:0;margin:0}
+h1{font-size:var(--text-h1);line-height:var(--leading-hero)}
+h2{font-size:var(--text-h2);letter-spacing:var(--tracking-h2)}
+h3{font-size:var(--text-h3);letter-spacing:var(--tracking-h3)}
+h4{font-size:var(--text-h4);letter-spacing:var(--tracking-h4)}
+p{margin:0}
+/* Bare links only — a button rendered as an <a> owns its own colour. */
+a:not([class*="ec-btn"]):not([class*="ec-navlink"]){color:var(--color-ink-strong);text-decoration:none;transition:color var(--duration-ui) var(--ease-out)}
+a:not([class*="ec-btn"]):not([class*="ec-navlink"]):hover{color:var(--color-ink-strongest)}
+a[class*="ec-btn"]{text-decoration:none}
+code,kbd,samp,pre{font-family:var(--font-mono);font-size:var(--text-xs)}
+:focus-visible{outline:2px solid var(--color-focus-ring);outline-offset:2px}
+::selection{background:var(--color-brand-lime-200);color:var(--color-ink-strongest)}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}

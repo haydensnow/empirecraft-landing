@@ -1,0 +1,94 @@
+/* ── Color ──────────────────────────────────────────────────────────────────
+   Warm paper, never pure white; warm near-black ink, never #000.
+   Hierarchy is expressed by INK ALPHA (90/85/80/70/50), not by hue or weight. */
+:root{
+  /* Surfaces */
+  --color-surface:#f5f5f2;          /* page ground, buttons at rest */
+  --color-surface-raised:#fbfbf8;   /* cards, panels */
+  --color-surface-sunken:#f3f3f0;   /* inset tiles */
+  --color-surface-cta:#f1f1ee;      /* CTA rest, framed panels */
+  --color-surface-hover:#f0f0ed;    /* hover well */
+  --color-surface-hover-deep:#ededea;
+  --color-surface-darker:#e7e7e3;   /* pressed */
+  --color-surface-halo:#e8e7e6;     /* halo / hairline base */
+  --color-white:#fff;
+  --color-black:#000;
+
+  /* Ink — warm (content text). Base #262323 */
+  --color-ink-strongest:#262323e6;  /* 90% */
+  --color-ink-strong:#262323d9;     /* 85% */
+  --color-ink:#262323cc;            /* 80% — DEFAULT body */
+  --color-ink-muted:#262323b3;      /* 70% */
+  --color-ink-faint:#26232380;       /* 50% — large text only */
+  --color-ink-hairline:#26232326;   /* 15% — rules, scroll thumbs */
+  --color-ink-hairline-soft:#2623230d;
+
+  /* Ink — cool (product chrome / borders / dark buttons). Base #202020 */
+  --color-ink-ui-solid:#202020;
+  --color-ink-ui-strong:#202020e6;
+  --color-ink-ui:#202020cc;
+  --color-ink-ui-muted:#20202099;
+  --color-ink-ui-faint:#20202066;
+  --color-ink-ui-subtle:#20202033;
+
+  /* Ink — navy (used over cool photographic footers) */
+  --color-ink-navy:#122038cc;
+  --color-ink-navy-faint:#12203866;
+
+  /* Borders */
+  --color-border:#2020201a;         /* 10% — the real default border */
+  --color-border-card:#dee2de;
+  --color-border-pill:#e3e3e0;
+
+  /* Brand accents — scarce. Never a large fill outside the hero. */
+  --color-brand-orange:#ef5c06;     /* the live site's theme-color — primary brand accent */
+  --color-brand-orange-bg:#fde6d5;
+  --color-brand-blue:#1a6fd1;       /* hero / diamond */
+  --color-brand-amber:#f2b705;      /* torchlight, pinned-tab mark */
+  --color-brand-brown:#a76451;      /* crafted wood, accent text */
+  --color-brand-brown-bg:#f0ddd5;
+  --color-brand-lime-300:#bbf451;
+  --color-brand-lime-200:#d8f999;
+  --color-brand-green:#549f4b;      /* grass, "online" */
+
+  /* Semantic */
+  --color-feature-success:#34a853;
+  --color-feature-success-bg:#dff0d5;
+  --color-feature-success-ink:#6fa751;
+  --color-feature-neutral:#bfbfbf;
+  --color-focus-ring:#5D86EE80;     /* 50% */
+  --color-loader:#2688dd;
+
+  /* Translucent constants that build the depth model */
+  --white-35:#ffffff59;             /* the inner-highlight constant */
+  --white-30:#ffffff4d;
+  --white-24:#ffffff3d;
+  --white-16:#ffffff29;
+  --white-10:#ffffff1a;
+  --white-08:#ffffff14;
+  --black-25:#00000040;
+  --black-12:#0000001f;
+  --black-10:#0000001a;
+  --black-08:#00000014;
+  --black-06:#0000000f;
+  --black-05:#0000000d;
+  --black-03:#00000008;
+  --black-02:#00000005;
+
+  /* Semantic aliases */
+  --text-heading:var(--color-ink-strongest);
+  --text-body:var(--color-ink);
+  --text-secondary:var(--color-ink-muted);
+  --text-tertiary:var(--color-ink-faint);
+  --text-chrome:var(--color-ink-ui);
+  --text-on-dark:#fff;
+  --surface-page:var(--color-surface);
+  --surface-card:var(--color-surface-raised);
+  --surface-panel:var(--color-surface-cta);
+  --surface-inset:var(--color-surface-sunken);
+  --border-default:var(--color-border);
+  --status-online:var(--color-brand-green);
+  --status-idle:var(--color-brand-amber);
+  --status-offline:var(--color-feature-neutral);
+  --accent-brand:var(--color-brand-orange);
+}

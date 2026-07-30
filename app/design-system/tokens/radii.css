@@ -1,0 +1,12 @@
+/* ── Radii ──────────────────────────────────────────────────────────────────
+   8px is the default. 16px large cards, 12px panels, 4px micro-chips. */
+:root{
+  --radius-chip:3px;
+  --radius-sm:4px;
+  --radius:8px;        /* DEFAULT — buttons, inputs, pills */
+  --radius-tile:10px;
+  --radius-panel:12px;
+  --radius-card:16px;
+  --radius-pill:20px;
+  --radius-full:1000px;
+}

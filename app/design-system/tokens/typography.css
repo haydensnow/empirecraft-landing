@@ -1,0 +1,49 @@
+/* ── Typography ─────────────────────────────────────────────────────────────
+   One signature: variable weight 460 almost everywhere. Headings are 400 —
+   NEVER bold. Line-heights are percentages, not ratios. */
+:root{
+  --font-sans:"Hanken Grotesk","Neoris Fallback",sans-serif;
+  --font-mono:"IBM Plex Mono","IBM Plex Mono Fallback",monospace;
+  --font-pixel:"Silkscreen","Pixel Fallback",monospace;
+  --font-display:"PP Mondwest",serif;    /* headlines: hero, section headings, slide titles */
+
+  /* Weight axis, driven at 10-unit granularity */
+  --weight-heading:400;
+  --weight-nav-rest:410;
+  --weight-label:430;
+  --weight-body:460;    /* DEFAULT */
+  --weight-emphasis:500;
+  --weight-micro:530;
+
+  /* Sizes — hand-picked per role, not a ramp */
+  --text-h1:46px;
+  --text-h1-md:38px;
+  --text-h1-sm:34px;
+  --text-h2:40px;
+  --text-h2-md:32px;
+  --text-h2-sm:28px;
+  --text-h3:32px;
+  --text-h4:24px;
+  --text-lead:16px;
+  --text-ui:15px;       /* DEFAULT UI size */
+  --text-sm:13px;
+  --text-xs:12px;
+  --text-micro:10px;
+
+  /* Line-height, as percentages */
+  --leading-hero:108%;
+  --leading-hero-sm:110%;
+  --leading-heading:115%;
+  --leading-subhead:120%;
+  --leading-body:140%;
+  --leading-nav:150%;
+
+  /* Tracking — positive on small text, negative only on display */
+  --tracking-display:-0.2px;
+  --tracking-h2:0.28px;
+  --tracking-h3:0.32px;
+  --tracking-h4:0.15px;
+  --tracking-body:0.15px;
+  --tracking-sm:0.1px;
+  --tracking-micro:0.1px;
+}

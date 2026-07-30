@@ -1,0 +1,29 @@
+name: Refresh Discord announcements
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Fetch and format announcements
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+        run: node scripts/fetch-discord-news.mjs
+      - name: Save changes
+        run: |
+          git config user.name "EmpireCraft news bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add public/news.json
+          git diff --cached --quiet || git commit -m "Refresh Discord announcements"
+          git push

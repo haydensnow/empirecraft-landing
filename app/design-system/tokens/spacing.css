@@ -1,0 +1,31 @@
+/* ── Spacing & layout ───────────────────────────────────────────────────────
+   4px base. Gaps stay small (4/6/8/12); sections breathe at 100–160px. */
+:root{
+  --spacing:0.25rem;
+  --space-1:4px;  --space-2:6px;  --space-3:8px;  --space-4:10px;
+  --space-5:12px; --space-6:16px; --space-7:20px; --space-8:24px;
+  --space-9:32px; --space-10:40px; --space-11:48px; --space-12:60px;
+  --space-13:80px; --space-14:100px; --space-15:120px; --space-16:160px;
+
+  /* Containers */
+  --container-wide:1440px;
+  --container:1100px;      /* PRIMARY content container */
+  --container-intro:820px;
+  --container-hero-text:720px;
+  --container-copy:450px;   /* feature-card copy — most reused */
+
+  /* Gutters */
+  --gutter:20px;
+  --gutter-tablet:32px;
+
+  /* Vertical rhythm */
+  --section-y:120px;
+  --section-y-lg:160px;
+  --section-y-sm:56px;
+
+  /* Control geometry — every button is 41px tall, 12px side padding */
+  --control-h:41px;
+  --control-h-sm:32px;
+  --control-px:12px;
+  --gap-icon-label:6px;
+}
