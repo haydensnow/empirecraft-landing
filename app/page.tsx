@@ -1,101 +1,11 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-
-type NewsPost = {
-  id: string;
-  title: string;
-  body: string;
-  category: "Server" | "Event" | "Community" | "Season" | "Announcement";
-  publishedAt: string;
-  author: string;
-  reactions: number;
-  link?: string | null;
-  sourceUrl: string;
-};
-
-type NewsPayload = {
-  generatedAt: string;
-  posts: NewsPost[];
-};
 
 const DISCORD_URL = "https://discord.gg/AtxJ6JNGTb";
 const MAP_URL = "https://map.empirecraftmc.com/";
 const SERVER_IP = "play.empirecraftmc.com";
-
-const fallbackNews: NewsPost[] = [
-  {
-    id: "1529220462310326503",
-    title: "Server updated to 26.2",
-    body: "The server is now on 26.2, and the world border radius has expanded by another 500 blocks.",
-    category: "Server",
-    publishedAt: "2026-07-21T20:16:09.757Z",
-    author: "Hayden",
-    reactions: 9,
-    sourceUrl:
-      "https://discord.com/channels/538113944053874688/567476367420030986/1529220462310326503",
-  },
-  {
-    id: "1465088466663768338",
-    title: "Server updated to 1.21.11",
-    body: "The server has been updated to 1.21.11.",
-    category: "Server",
-    publishedAt: "2026-01-25T20:58:30.480Z",
-    author: "Hayden",
-    reactions: 10,
-    sourceUrl:
-      "https://discord.com/channels/538113944053874688/567476367420030986/1465088466663768338",
-  },
-  {
-    id: "1449579968966426746",
-    title: "Secret Santa matches are out",
-    body: "Everyone who signed up should have received their Secret Santa recipient. If yours is missing, message Hayden.",
-    category: "Event",
-    publishedAt: "2025-12-14T01:53:16.495Z",
-    author: "Hayden",
-    reactions: 5,
-    sourceUrl:
-      "https://discord.com/channels/538113944053874688/567476367420030986/1449579968966426746",
-  },
-  {
-    id: "1448785694867722457",
-    title: "Secret Santa is back",
-    body: "Sign up to surprise another player with a gift or a build at their base before Christmas.",
-    category: "Event",
-    publishedAt: "2025-12-11T21:17:06.793Z",
-    author: "Hayden",
-    reactions: 5,
-    link:
-      "https://docs.google.com/forms/d/e/1FAIpQLSdZFzaAOv8IDTU9HbLm6YHrr38I31eCuJp5_fTi-ZVulBzEIA/viewform?usp=dialog",
-    sourceUrl:
-      "https://discord.com/channels/538113944053874688/567476367420030986/1448785694867722457",
-  },
-  {
-    id: "1445886287872659476",
-    title: "Season 5 world download",
-    body: "Season 5 wrapped a few days early after technical issues and low activity. The final world backup is available to download.",
-    category: "Season",
-    publishedAt: "2025-12-03T21:15:54.297Z",
-    author: "Hayden",
-    reactions: 16,
-    link:
-      "https://drive.google.com/file/d/1sWen4alktrKPdbOWFui5eOAqwngQSfaN/view?usp=sharing",
-    sourceUrl:
-      "https://discord.com/channels/538113944053874688/567476367420030986/1445886287872659476",
-  },
-  {
-    id: "1440899046804947076",
-    title: "A reminder about community standards",
-    body: "Harassment and toxic behavior are not tolerated. We use a one-strike policy so this stays a comfortable place to play.",
-    category: "Community",
-    publishedAt: "2025-11-20T02:58:23.368Z",
-    author: "Hayden",
-    reactions: 5,
-    sourceUrl:
-      "https://discord.com/channels/538113944053874688/567476367420030986/1440899046804947076",
-  },
-];
 
 const applicationQuestions = [
   "Your Minecraft username",
@@ -112,20 +22,9 @@ const rules = [
   "No cheating, hacking, use of x-ray, or similar actions.",
 ];
 
-function formatPostDate(value: string) {
-  return new Intl.DateTimeFormat("en", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "UTC",
-  }).format(new Date(value));
-}
-
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [news, setNews] = useState<NewsPost[]>(fallbackNews);
-  const [filter, setFilter] = useState("All");
 
   useEffect(() => {
     const onScroll = () => {
@@ -148,27 +47,6 @@ export default function Home() {
     };
   }, []);
 
-  useEffect(() => {
-    fetch("/news.json")
-      .then((response) => {
-        if (!response.ok) throw new Error("News feed unavailable");
-        return response.json() as Promise<NewsPayload>;
-      })
-      .then((payload) => {
-        if (payload.posts?.length) setNews(payload.posts);
-      })
-      .catch(() => {
-        // The built-in snapshot keeps the page useful between feed refreshes.
-      });
-  }, []);
-
-  const filters = useMemo(
-    () => ["All", ...Array.from(new Set(news.map((post) => post.category)))],
-    [news],
-  );
-  const visibleNews =
-    filter === "All" ? news : news.filter((post) => post.category === filter);
-
   async function copyServerIp() {
     await navigator.clipboard.writeText(SERVER_IP);
     setCopied(true);
@@ -190,9 +68,6 @@ export default function Home() {
           <nav aria-label="Primary navigation">
             <a className="ec-navlink" href="#about">
               About
-            </a>
-            <a className="ec-navlink" href="#news">
-              News
             </a>
             <a className="ec-navlink" href="#map">
               Map
@@ -369,95 +244,6 @@ export default function Home() {
               </div>
             </dl>
           </div>
-        </div>
-      </section>
-
-      <section className="news-section ec-container" id="news">
-        <div className="news-heading">
-          <div>
-            <h2>Announcements</h2>
-            <p className="section-lead">
-              These are pulled from our Discord announcements channel. Pings
-              and Discord formatting are removed.
-            </p>
-          </div>
-          <a
-            className="ec-btn ec-btn--secondary"
-            href={DISCORD_URL}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Open Discord
-          </a>
-        </div>
-        <div className="filter-row" aria-label="Filter announcements">
-          {filters.map((item) => (
-            <button
-              className={`ec-tag ec-tag--interactive ${
-                filter === item ? "ec-tag--selected" : ""
-              }`}
-              type="button"
-              key={item}
-              onClick={() => setFilter(item)}
-              aria-pressed={filter === item}
-            >
-              {item}
-            </button>
-          ))}
-        </div>
-        <div className="news-list" aria-live="polite">
-          {visibleNews.slice(0, 10).map((post) => (
-            <article className="news-row" key={post.id}>
-              <time dateTime={post.publishedAt}>
-                {formatPostDate(post.publishedAt)}
-              </time>
-              <div>
-                <div className="news-meta">
-                  <span
-                    className={`ec-badge ec-badge--${
-                      post.category === "Event"
-                        ? "lime"
-                        : post.category === "Community"
-                          ? "brown"
-                          : post.category === "Season"
-                            ? "orange"
-                            : post.category === "Server"
-                              ? "blue"
-                              : "neutral"
-                    }`}
-                  >
-                    {post.category}
-                  </span>
-                  <span>{post.author}</span>
-                </div>
-                <h3>{post.title}</h3>
-                <p>{post.body}</p>
-                <div className="news-links">
-                  {post.link ? (
-                    <a
-                      className="ec-well-link"
-                      href={post.link}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Open the attached link ↗
-                    </a>
-                  ) : null}
-                  <a
-                    className="ec-well-link"
-                    href={post.sourceUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    View in Discord ↗
-                  </a>
-                  {post.reactions > 0 ? (
-                    <span>{post.reactions} reactions</span>
-                  ) : null}
-                </div>
-              </div>
-            </article>
-          ))}
         </div>
       </section>
 

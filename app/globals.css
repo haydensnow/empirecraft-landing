@@ -218,7 +218,6 @@ button {
 
 .intro-section h2,
 .section-heading h2,
-.news-heading h2,
 .map-copy h2,
 .apply-copy h2 {
   max-width: 16ch;
@@ -260,7 +259,6 @@ button {
 }
 
 .server-section,
-.news-section,
 .rules-section,
 .apply-section {
   padding-top: 132px;
@@ -335,82 +333,6 @@ button {
 
 .facts-panel code {
   font-size: 12px;
-}
-
-.news-heading {
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
-  align-items: flex-end;
-}
-
-.section-lead {
-  max-width: 590px;
-  margin-top: 16px;
-  color: var(--color-ink-muted);
-}
-
-.filter-row {
-  display: flex;
-  gap: 7px;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-
-.filter-row button {
-  appearance: none;
-}
-
-.news-list {
-  margin-top: 24px;
-  border-top: 1px solid var(--color-border);
-}
-
-.news-row {
-  display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
-  gap: 30px;
-  padding: 28px 0;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.news-row > time {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  color: var(--color-ink-faint);
-}
-
-.news-meta {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  font-size: var(--text-sm);
-  color: var(--color-ink-faint);
-}
-
-.news-row h3 {
-  margin-top: 13px;
-  font-size: 29px;
-}
-
-.news-row h3 + p {
-  max-width: 670px;
-  margin-top: 9px;
-  color: var(--color-ink-muted);
-}
-
-.news-links {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
-  margin-top: 16px;
-  font-size: var(--text-sm);
-}
-
-.news-links > span {
-  margin-left: auto;
-  color: var(--color-ink-faint);
 }
 
 .map-section {
@@ -762,7 +684,6 @@ footer {
   .intro-section,
   .feature-grid,
   .server-section,
-  .news-section,
   .rules-section,
   .apply-section {
     padding-left: 18px;
@@ -771,7 +692,6 @@ footer {
 
   .intro-section,
   .server-section,
-  .news-section,
   .rules-section,
   .apply-section {
     padding-top: 88px;
@@ -796,29 +716,6 @@ footer {
 
   .facts-panel dd {
     text-align: left;
-  }
-
-  .news-heading {
-    display: grid;
-    align-items: start;
-  }
-
-  .news-heading .ec-btn {
-    justify-self: start;
-  }
-
-  .news-row {
-    grid-template-columns: 1fr;
-    gap: 11px;
-  }
-
-  .news-row h3 {
-    font-size: 25px;
-  }
-
-  .news-links > span {
-    width: 100%;
-    margin-left: 0;
   }
 
   .map-section {
