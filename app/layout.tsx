@@ -1,33 +1,35 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const title = "EmpireCraft — Build Together";
+const description =
+  "A small, whitelisted Java SMP. Mostly vanilla, building together since 2018.";
+const socialImage = {
+  url: "/og-build-together.png",
+  width: 1200,
+  height: 630,
+  type: "image/png",
+  alt: "EmpireCraft’s mountain spawn and Nether portal with the words Build Together. A small, whitelisted Java SMP. Mostly vanilla, building together since 2018.",
+};
+
 export const metadata: Metadata = {
-  title: "EmpireCraft — Private semi-vanilla Minecraft server",
-  description:
-    "A private, whitelisted Java Minecraft server. The community started in 2018, and Season 6 began in October 2025.",
+  title,
+  description,
   metadataBase: new URL("https://www.empirecraftmc.com"),
+  alternates: { canonical: "https://www.empirecraftmc.com/" },
   openGraph: {
-    title: "EmpireCraft — Private semi-vanilla Minecraft server",
-    description:
-      "A private, whitelisted Java Minecraft server. The community started in 2018, and Season 6 began in October 2025.",
+    title,
+    description,
     type: "website",
     url: "https://www.empirecraftmc.com",
     siteName: "EmpireCraft",
-    images: [
-      {
-        url: "/og.png",
-        width: 1200,
-        height: 630,
-        alt: "EmpireCraft spawn with the words: Community since 2018. Season 6 since October 2025.",
-      },
-    ],
+    images: [socialImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: "EmpireCraft — Private semi-vanilla Minecraft server",
-    description:
-      "A private, whitelisted Java Minecraft server. The community started in 2018, and Season 6 began in October 2025.",
-    images: ["/og.png"],
+    title,
+    description,
+    images: [socialImage],
   },
   icons: {
     icon: "/favicon.svg",

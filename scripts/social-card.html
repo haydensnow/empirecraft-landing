@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EmpireCraft Social Card</title>
+    <style>
+      @font-face {
+        font-family: "Minecraft UI";
+        src: url("../public/assets/fonts/Minecraft-Regular.woff2") format("woff2");
+        font-weight: 400;
+      }
+      @font-face {
+        font-family: "Minecraft UI";
+        src: url("../public/assets/fonts/Minecraft-Bold.woff2") format("woff2");
+        font-weight: 700;
+      }
+      * { box-sizing: border-box; }
+      html, body { width: 1200px; height: 630px; margin: 0; overflow: hidden; }
+      body { font-family: Arial, Helvetica, sans-serif; color: white; -webkit-font-smoothing: antialiased; }
+      header { height: 68px; padding: 0 64px; display: flex; align-items: center; justify-content: space-between; background: #20231f; border-bottom: 2px solid #11170e; }
+      .wordmark { font: 700 24px/1.2 "Minecraft UI", monospace; letter-spacing: -.035em; }
+      .domain { color: #dddeda; font-size: 16px; }
+      main { height: 548px; position: relative; display: flex; align-items: center; padding: 0 64px; }
+      .scene { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 55%; }
+      .shade { position: absolute; inset: 0; background: linear-gradient(90deg, #131b17ef 0%, #131b17c9 30%, #131b1730 67%, #131b1705 100%), linear-gradient(0deg, #0f160d55, transparent 40%); }
+      .copy { position: relative; max-width: 650px; margin-top: -16px; }
+      h1 { margin: 0; font: 400 64px/1.08 "Minecraft UI", monospace; letter-spacing: -.04em; text-shadow: 4px 5px 0 #111a17a6; }
+      p { margin: 22px 0 0; font-size: 22px; line-height: 1.6; max-width: 38ch; color: #f1f2ec; }
+      .grass { height: 14px; background: linear-gradient(#648e35cf 0 5px, #26391f85 5px 8px, #4c372aaa 8px), url("../public/assets/minecraft/grass_block_side.png") top left/48px 48px; image-rendering: pixelated; }
+    </style>
+  </head>
+  <body>
+    <header><span class="wordmark">EmpireCraft</span><span class="domain">empirecraftmc.com</span></header>
+    <main>
+      <img class="scene" src="../public/assets/images/hero-spawn-valley.webp" alt="" />
+      <div class="shade"></div>
+      <div class="copy"><h1>Build Together.</h1><p>A small, whitelisted Java SMP. Mostly vanilla, building together since 2018.</p></div>
+    </main>
+    <div class="grass"></div>
+    <script>
+      Promise.all([document.fonts.ready, ...Array.from(document.images, image => image.decode())]).then(() => document.body.classList.add('ready'));
+    </script>
+  </body>
+</html>
