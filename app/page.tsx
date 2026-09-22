@@ -50,7 +50,7 @@ const questions = [
 function Arrow({ diagonal = false }: { diagonal?: boolean }) {
   return (
     <span className="arrow" aria-hidden="true">
-      {diagonal ? "↗" : "→"}
+      <svg width="1em" height="1em" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ verticalAlign: "-0.125em" }}>{diagonal ? <path d="M4.5 11.5 11.5 4.5M6 4.5h5.5V10" /> : <path d="M2.5 8h11M9.5 4.5 13 8l-3.5 3.5" />}</svg>
     </span>
   );
 }
